@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <link rel="stylesheet" href="style.css">
+    <title>VideoGo</title>
+ </head>
+ <body>
+   <video id="background-video" autoplay muted loop>
+      <source src="../Images/advertisment.mp4" type="video/mp4">
+    </video>
+   <div class="container">
+      <div class="titlebar">
+          <div class="title">
+              <h2>Video Go</h2>
+          </div>
+      </div>
+      <div class="menubar">
+         <a href=""><h3>Home</h3></a>
+         <a href=""><h3>TV Shows</h3></a>
+         <a href=""><h3>Movies</h3></a>
+         <a href=""><h3>News</h3></a>
+
+         <a href="/logout" class="logout"><h3>Logout</h3></a>
+       </div>
+      </div>
+      <div class="advertisement">
+         <div class="play">
+          <h1 id="title">Title</h1>
+          <h6 id="description">Description</h6>
+          <div id="buttons">
+          <div id="playButton">
+            <img src="../Images/Arrow.png">
+            <h5>Play</h5>
+         </div>
+          <div id="playButton"><h5>More Info</h5></div>
+         </div>
+         </div>
+         <div class="slider">
+            <div class="leftswipe">
+            <img src="../Images/redarrow.png" width="30" height="30">
+            </div>
+          <div class="imageslider">
+            <img src="../Images/slider1.png" id="sliderimage">
+          </div>
+          <div class="rightswipe">
+            <img src="../Images/redarrow.png" width="30" height="30">
+          </div>
+       </div>
+         <div class="ad">
+               <div class="title2">
+                   <h2>Video Go</h2>
+               </div>
+             <h3 align="center">To read</h3>
+             <h5>Mobile & TV/Desktop</h5>
+             <ul>
+              <li><h6>Get for desktop</h6></li>
+              <li><h6>Get for mobile</h6></li>
+              <li><h6>Get for TV</h6></li>
+            </ul>
+         </div>
+      </div>
+      <div class="popularcontainer">
+         <div id="showtitle">
+            <h3>Popular on <span id="videogo">Video Go</span></h3>
+         </div>
+         <div id="panel1">
+         <div id="leftslider">  
+            <img src="../Images/redarrow.png" width="30" height="30" id="leftarrow">
+         </div>
+      <div id="shows">
+         <%for(var i in youtubeplaylist) {%>
+            <a href="/wow?url=<%=youtubeplaylist[i].video_url%>"><img src="<%=youtubeplaylist[i].thumb%>" width="250" height="250"/></a>
+        <%}%>
+      </div>
+      <div id="rightslider">
+         <img src="../Images/redarrow.png" width="30" height="30" id="rightarrow">
+      </div>
+   </div>
+      </div>
+      <div class="popularcontainer2">
+         <div id="showtitle">
+            <h3>Original <span id="videogo">Album</span></h3>
+         </div>
+         <div id="panel1">
+         <div id="leftslider2">  
+            <img src="../Images/redarrow.png" width="30" height="30" id="leftarrow2">
+         </div>
+         <div id="shows2">
+            <%for(var i in images) {%>
+               <a href="<%=images[i].videoUrl%>"><img src="<%=images[i].trackThumb%>"/></a>
+           <%}%>
+      </div>
+      <div id="rightslider2">
+         <img src="../Images/redarrow.png" width="30" height="30" id="rightarrow2">
+      </div>
+   </div>
+      </div>
+     <script src="../MainPage/mainpage.js"></script>
+ </body>
+ </html>

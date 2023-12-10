@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register Page</title>
+    <style>
+        body
+        {
+            padding:0;
+            margin: 0;
+            background-image: url('../Images/Background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: Sans-serif;
+            overflow: hidden;
+        }
+        .container
+        {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            transform:translate(20px,300px);
+        }
+        .container form
+        {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+          
+        }
+        #email
+        {
+            width: 20vw;
+            height:5vh;
+            border-radius: 5px;
+            background-color: transparent;
+            border: 0.5px solid white;
+            color: lightgray;
+            font-size: 1em;
+            font-weight: bold;
+            padding:7px;
+        }
+        ::placeholder
+        {
+            text-align:center;
+        }
+        #getstarted
+        {
+            display: flex;
+            align-items: center;
+            width: 20vmin;
+            height:7vh;
+            color: white;
+            border-radius: 5px;
+            border: 0.5px solid white;
+            font-weight: bold;
+            font-size: 2vmin;
+            background-color:darkred;
+            margin-left: 5px;
+        }
+        #getstarted img
+        {
+           width: 2vmin;
+        }
+        #getstarted h3
+        {
+            margin:10px;
+            text-align:start;
+        }
+        #getstarted h3:hover
+        {
+            cursor: pointer;
+        }
+        .container h1,h3
+        {
+            color: white;
+        }
+        .title
+        {
+            display: flex;
+            color: red;
+            margin-left: 20px;
+        }
+        .title h2
+        {
+            border: 2px solid black; 
+            padding: 15px;
+        }
+
+        .container #errormessage
+        {
+            margin-top:2px;
+            margin-left: 0;
+            color: darkorange;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="title"> <h2>Video Go</h2></div>
+   
+    <div class="container">
+        <h1>Unlimited films, TV programmes and more</h1>
+        <h3>Ready to watch? Enter your email to create or restart your membership</h3>
+    <form method="post" action="/email" id="emailform">
+        <input type="email" id="email" placeholder="Email address" name="email">
+        <a id="getstartedButton">
+         <div id="getstarted">
+            <h3>Get Started</h3>
+            <img src="../Images/Arrow.png"></img>
+        </div></a>
+        
+    </form>
+    
+    <h6 id="errormessage"><%=error%></h6>
+    </div>
+    <script src="../LandingPage/landing.js"></script>
+</body>
+</html>

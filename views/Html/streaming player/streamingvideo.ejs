@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <link rel="stylesheet" href="../streaming player/stylesvideo.css">
+    <title>VideoGo</title>
+ </head>
+ <body>
+   <video id="background-video" autoplay muted loop>
+      <source src="../Images/advertisment.mp4" type="video/mp4">
+    </video>
+   <div class="container">
+      <div class="titlebar">
+          <div class="title">
+              <h2>Video Go</h2>
+          </div>
+      </div>
+      <div class="menubar">
+         <a href=""><h3>Home</h3></a>
+         <a href=""><h3>TV Shows</h3></a>
+         <a href=""><h3>Movies</h3></a>
+         <a href=""><h3>News</h3></a>
+       </div>
+      </div>
+      <div class="advertisement">
+         <div class="play">
+          <h1 id="title"><%=videotitle%></h1>
+          <h4 id="description">Description:<br/>
+            <span>Category:<%=category%></span><br/>
+            <span>Views Count:<%=viewscount%></span><br/>
+            <span>Upload Date:<%=uploaddate%></span><br/>
+            <span>Published Date:<%=publisheddate%></span><br/>
+            <span>Ownership Channel Name:<%=ownershipdate%></span><br/>
+          </h4>
+          <div id="buttons">
+          <div id="playButton">
+            <img src="../Images/Arrow.png">
+            <h5>Play</h5>
+         </div>
+          <div id="playButton"><h5>More Info</h5></div>
+         </div>
+         </div>
+         <div class="slider">
+            <div class="leftswipe">
+            </div>
+          <div class="imageslider">
+            <video controls class="player">
+                <source src=<%=src%> type="video/mp4" class="source">
+            </source>
+              </video>
+          </div>
+          <div class="rightswipe">
+
+          </div>
+       </div>
+         <div class="ad">
+               <div class="title2">
+                   <h2>Video Go</h2>
+               </div>
+             <h3 align="center">To read</h3>
+             <h5>Mobile & TV/Desktop</h5>
+             <ul>
+              <li><h6>Get for desktop</h6></li>
+              <li><h6>Get for mobile</h6></li>
+              <li><h6>Get for TV</h6></li>
+            </ul>
+         </div>
+      </div>
+      <div class="popularcontainer">
+         <div id="panel1">
+            <div id='src' hidden><%=src%></div>
+   </div>
+      </div>
+     <script>
+       var clicked=false;
+        var player=document.querySelector('.player');
+        var source=document.querySelector('.source');
+        var src=document.querySelector('#src');
+        source.src=src.innerText;
+        console.log('source',source.src);
+        player.addEventListener('play',(e)=>{
+         if(!clicked && performance.navigation.type!==1)
+         {
+            clicked=true;
+            window.location.href=`/player?url=<%=url%>`;
+            window.location.reload();
+         }
+        });
+     </script>
+ </body>
+ </html>
