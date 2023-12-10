@@ -6,7 +6,9 @@ const ffg=require('fluent-ffmpeg');
 const mongo=require('mongoose');
 const youtube=require('ytdl-core');
 
-var mongodb=mongo.connect('mongodb://127.0.0.1:27017',{dbName:'videogo'}).catch(e=>console.log(e)).then(e=>console.log('Database connected!'));
+
+dot.config({path:'./config.env'});
+var mongodb=mongo.connect(process.env.MONGO_URI,{dbName:'videogo'}).catch(e=>console.log(e)).then(e=>console.log('Database connected!'));
 
 var schema=mongo.Schema({
     name:{
@@ -28,7 +30,7 @@ var model=mongo.model('videogomodel',schema);
 
 const axios = require('axios');
 
-dot.config({path:'./config.env'});
+
 app.use(express.static(__dirname+"/views/Html"));
 app.use(express.static(__dirname+"/views/Html/MainPage"));
 app.set('view engine','ejs');
@@ -299,4 +301,4 @@ app.get('/wow',async (req,res)=>{
     ownershipdate:videodetails.description.OwnershipChannelName,
     });
 });
-app.listen(process.env.PORT,()=>console.log('Connected!'));
+app.listen(process.env.PORT,'0.0.0.0',()=>console.log('Connected!'));
