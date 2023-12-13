@@ -5,8 +5,10 @@ const dot=require('dotenv');
 const ffg=require('fluent-ffmpeg');
 const mongo=require('mongoose');
 const youtube=require('ytdl-core');
+const cookieparser=require('cookie-parser');
 
 
+app.use(cookieparser());
 dot.config({path:'./config.env'});
 var mongodb=mongo.connect(process.env.MONGO_URI,{dbName:'videogo'}).catch(e=>console.log(e)).then(e=>console.log('Database connected!'));
 
@@ -186,9 +188,19 @@ app.post('/login',async (req,res)=>{
             res.render(__dirname+'/views/Html/LoginPage/login.ejs',{email:'',error:'Password Incorrect!'});
             return;
         }
-        res.cookie('id','asdasdasdcxz',{httpOnly:true,secure:true});
-        res.render(__dirname+'/views/Html/MainPage/index.ejs',{images:trackDetails,youtubeplaylist:youtubePlaylist});
+        res.cookie('ID','asdasdasdcxz',{httpOnly:true,secure:true});
+        res.redirect('/homepage');
     }
+});
+
+app.get('/homepage',(req,res)=>{
+    const cookies=req.cookies.ID;
+    if(!cookies)
+      {
+        res.redirect('/logout');
+        return;
+      }
+    res.render(__dirname+'/views/Html/MainPage/index.ejs',{images:trackDetails,youtubeplaylist:youtubePlaylist});
 });
 app.get('/register',(req,res)=>{
     res.render(__dirname+'/views/Html/RegisterPage/register.ejs',{error:''});
@@ -280,7 +292,7 @@ app.get('/player',async(req,res)=>{
 });
 
 app.get('/logout',(req,res)=>{
-    res.cookie('id','',{expires:new Date(Date.now())});
+    res.cookie('ID','',{expires:new Date(Date.now())});
     res.render(__dirname+'/views/Html/LoginPage/login.ejs',{email:'',error:''});
 });
 const videodetails={};
